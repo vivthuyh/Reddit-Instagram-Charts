@@ -1,0 +1,19 @@
+import pandas as pd
+import plotly.graph_objs as go
+
+data = pd.read_csv('redditinsta.csv')
+
+# Create traces
+trace_likes = go.Scatter(x=data['Date'], y=data['Likes'], mode='lines', name='Likes')
+trace_comments = go.Scatter(x=data['Date'], y=data['Comments'], mode='lines', name='Comments')
+
+# Plot layout
+layout = go.Layout(title='Reddit Instagram Likes and Comments in Jan. 2024',
+                   xaxis=dict(title='Date'),
+                   yaxis=dict(title='Count'))
+
+# Create figure
+fig = go.Figure(data=[trace_likes, trace_comments], layout=layout)
+
+# Display the figure
+fig.show()
